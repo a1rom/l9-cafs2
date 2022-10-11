@@ -41,10 +41,10 @@ class Order extends Model
     }
 
 // 🤔 is it needed?
-    public function orderDetails()
-    {
-        return $this->hasMany(OrderDetail::class);
-    }
+    // public function orderDetails()
+    // {
+    //     return $this->hasMany(OrderDetail::class);
+    // }
 
     protected function status() : Attribute
     {
