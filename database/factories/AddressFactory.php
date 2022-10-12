@@ -21,6 +21,7 @@ class AddressFactory extends Factory
             'post_code' => fake()->postcode(),
             'city' => fake()->city(),
             'country' => fake()->country(),
+            'phone' => fake()->phoneNumber(),
         ];
     }
 }

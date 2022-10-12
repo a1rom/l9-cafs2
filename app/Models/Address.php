@@ -14,5 +14,6 @@ class Address extends Model
         'post_code',
         'city',
         'country',
+        'phone',
     ];
 }
