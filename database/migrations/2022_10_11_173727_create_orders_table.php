@@ -18,12 +18,22 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('delivery_address_id');
             $table->unsignedBigInteger('invoice_address_id');
-            $table->unsignedTinyInteger('status')->default(0);
+            $table->unsignedTinyInteger('status')
+                ->default(0);
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('delivery_address_id')->references('id')->on('addresses');
-            $table->foreign('invoice_address_id')->references('id')->on('addresses');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->restrictOnDelete();
+            $table->foreign('delivery_address_id')
+                ->references('id')
+                ->on('addresses')
+                ->restrictOnDelete();
+            $table->foreign('invoice_address_id')
+                ->references('id')
+                ->on('addresses')
+                ->restrictOnDelete();
         });
     }
 
