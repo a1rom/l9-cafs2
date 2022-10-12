@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('product_id')->constrained();
             $table->unsignedTinyInteger('quantity');
             $table->decimal('price', 8, 2);
+            $table->decimal('discount', 3, 2)->default(0);
             $table->timestamps();
         });
     }
