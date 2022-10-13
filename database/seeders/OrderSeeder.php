@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Order;
+use App\Models\Address;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -15,6 +17,10 @@ class OrderSeeder extends Seeder
      */
     public function run()
     {
-        Order::factory(6)->create();
+        Order::factory(6)
+            ->has(User::factory())
+            ->has(Address::factory(), 'deliveryAddress')
+            ->has(Address::factory(), 'invoiceAddress')
+            ->create();
     }
 }
