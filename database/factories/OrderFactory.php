@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use App\Models\Order;
 use App\Models\Address;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\Sequence;
@@ -19,25 +20,19 @@ class OrderFactory extends Factory
      */
     public function definition()
     {
-        $address = Address::all()->random()->id;
+        $deliveryAddress = Address::factory()->create()->id;
+
+        $randomDigit = fake()->randomDigit();
+        if ($randomDigit > 2) {
+            $invoiceAddress = $deliveryAddress;
+        } else {
+            $invoiceAddress = Address::factory()->create()->id;
+        }
 
         return [
-            // 'user_id' => User::all()->random()->id,
-            'user_id' => fake()->randomElement(
-                User::whereNotNull('email_verified_at')->pluck('id')
-            ),
-            // 'user_id' => User::all()
-            //     ->whereNotNull('email_verified_at')
-            //     ->random()
-            //     ->id,
-            'delivery_address_id' => $address,
-            'invoice_address_id' => fake()
-                ->randomElement(
-                    [
-                        $address,
-                        Address::all()->random()->id
-                    ]
-                ),
+            'user_id' => User::factory()->create()->id,
+            'delivery_address_id' => $deliveryAddress,
+            'invoice_address_id' => $invoiceAddress,
             'status' => fake()
                 ->randomElement(
                     [

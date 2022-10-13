@@ -18,12 +18,8 @@ class OrderDetailFactory extends Factory
      */
     public function definition()
     {
-        $productId = fake()->randomElement(
-            Product::whereNull('deleted_at')->pluck('id')
-        );
-        $price = Product::find($productId)->price;
-        $isDiscounted = fake()->boolean();
-        if ($isDiscounted) {
+        $price = fake()->randomFloat(2, 10, 100);
+        if (fake()->boolean()) {
             $discount = fake()->randomFloat(2, 0, 0.5);
             $price = $price * (1 - $discount);
         } else {
@@ -32,8 +28,8 @@ class OrderDetailFactory extends Factory
         $discountedPrice = $price - ($price * $discount / 100);
 
         return [
-            'order_id' => Order::all()->random()->id,
-            'product_id' => $productId,
+            'order_id' => Order::factory()->create()->id,
+            'product_id' => Product::factory()->create()->id,
             'quantity' => fake()->numberBetween(1, 10),
             'price' => $price,
             'discount' => $discount,
