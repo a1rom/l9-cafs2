@@ -40,11 +40,10 @@ class Order extends Model
         return $this->belongsTo(Address::class, 'invoice_address_id');
     }
 
-// 🤔 is it needed?
-    // public function orderDetails()
-    // {
-    //     return $this->hasMany(OrderDetail::class);
-    // }
+    public function orderDetails()
+    {
+        return $this->hasMany(OrderDetail::class);
+    }
 
     protected function status() : Attribute
     {
