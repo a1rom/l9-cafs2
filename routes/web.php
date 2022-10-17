@@ -15,15 +15,24 @@ use App\Http\Controllers\ProductController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::prefix('products')->group(function () {
-    Route::get('/', [ProductController::class, 'index'])->name('products.index');
-    // Route::get('/create', 'ProductController@create')->name('products.create');
-    // Route::post('/', 'ProductController@store')->name('products.store');
-    Route::get('/{product}', 'ProductController@show')->name('products.show');
-    // Route::get('/{product}/edit', 'ProductController@edit')->name('products.edit');
-    // Route::put('/{product}', 'ProductController@update')->name('products.update');
-    // Route::delete('/{product}', 'ProductController@destroy')->name('products.destroy');
+    Route::get('/', [ProductController::class, 'index'])->name('index');
+    Route::get('/{product}', 'ProductController@show')->name('show');
 });
+
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+
+Route::prefix('/contact')->group(function () {
+    Route::get('/', [ContactController::class, 'index'])->name('index');
+    Route::post('/', [ContactController::class, 'store'])->name('store');
+});
+

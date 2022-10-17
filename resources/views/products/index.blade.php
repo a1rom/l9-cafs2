@@ -30,11 +30,8 @@
                         <button type="submit">Delete</button>
                     </form>
                 </td>
-            {{-- <li>
-                <a href="/products/{{ $product->id }}">
-                    {{ $product->name }}
-                </a>
-            </li> --}}
+            </tr>
+        </table>
         @endforeach
     </ul>
 @endsection

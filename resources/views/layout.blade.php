@@ -15,10 +15,10 @@
                 <a href="/">Home</a>
             </li>
             <li>
-                <a href="/products">Products</a>
+                <a href="/about">About</a>
             </li>
             <li>
-                <a href="/products/create">Create Product</a>
+                <a href="/products">Products</a>
             </li>
         </ul>
     </nav>
@@ -30,5 +30,6 @@
     <footer>
         <p>Footer</p>
     </footer>
+
 </body>
 </html>
