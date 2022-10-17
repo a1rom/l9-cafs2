@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 
 /*
@@ -19,20 +21,21 @@ Route::get('/', function () {
 });
 
 Route::prefix('products')->group(function () {
-    Route::get('/', [ProductController::class, 'index'])->name('index');
-    Route::get('/{product}', 'ProductController@show')->name('show');
+    Route::get('/', [ProductController::class, 'index'])->name('products.index');
+    Route::get('/{product}', [ProductController::class, 'show'])->name('products.show');
 });
 
 Route::get('/about', function () {
     return view('about');
 })->name('about');
 
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
-
 Route::prefix('/contact')->group(function () {
-    Route::get('/', [ContactController::class, 'index'])->name('index');
-    Route::post('/', [ContactController::class, 'store'])->name('store');
+    Route::get('/', [ContactController::class, 'index'])->name('contact.index');
+    Route::post('/', [ContactController::class, 'store'])->name('contact.store');
+});
+
+Route::prefix('/orders')->group(function () {
+    Route::get('/', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('/{order}', [OrderController::class, 'show'])->name('orders.show');
 });
 

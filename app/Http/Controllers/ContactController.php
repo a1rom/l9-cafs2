@@ -8,7 +8,7 @@ class ContactController extends Controller
 {
     public function index()
     {
-        return view('contact.index');
+        return view('contact');
     }
 
     public function store(Request $request)
@@ -19,6 +19,6 @@ class ContactController extends Controller
             'message' => 'required',
         ]);
 
-        return redirect()->route('contact.index')->with('message', 'Thanks for your message. We\'ll be in touch.');
+        return redirect()->route('contact.store')->with('message', 'Thanks for your message. We\'ll be in touch.');
     }
 }

@@ -11,24 +11,20 @@
             <tr>
                 <td>
                     <li>
-                        <a href="/products/{{ $product->id }}">
-                            {{ $product->name }}
-                        </a>
+                        {{ $product->name }}
                     </li>
                 </td>
                 <td>
-                    <form action="/products/{{ $product->id }}" method="GET">
-                        @csrf
-                        @method('GET')
+                    <form action="/products/{{ $product->id }}">
                         <button type="submit">View</button>
                     </form>
                 </td>
                 <td>
-                    <form action="/products/{{ $product->id }}" method="POST">
+                    {{-- <form action="/products/{{ $product->id }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit">Delete</button>
-                    </form>
+                    </form> --}}
                 </td>
             </tr>
         </table>
