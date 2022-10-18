@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\QueryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 
@@ -39,3 +40,9 @@ Route::prefix('/orders')->group(function () {
     Route::get('/{order}', [OrderController::class, 'show'])->name('orders.show');
 });
 
+Route::controller(QueryController::class)->group(function () {
+    Route::get('/query-count', 'queryCountProducts')->name('query.all');
+    Route::get('/query-by-name', 'allProductsSortedByName')->name('query.byName');
+    Route::get('/query-active', 'queryActiveProductsLimitByThreeFromEnd')->name('query.active');
+    Route::get('/query-orders', 'selectTwoFirstOrdersAndCountNumberOfProducts')->name('query.orders');
+});
