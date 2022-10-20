@@ -13,7 +13,14 @@ class Product extends Model
         'sku',
         'ean',
         'name',
+        'category_id',
         'price',
+        'description',
         'details',
     ];
+
+    public function productCategory()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

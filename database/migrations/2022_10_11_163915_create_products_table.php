@@ -17,8 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('sku', 30)->unique()->index();
             $table->string('ean', 13)->unique()->index();
+            $table->foreignId('category_id')->constrained();
             $table->string('name');
             $table->decimal('price', 8, 2);
+            $table->text('description');
             $table->json('details')->nullable();
             $table->softDeletes();
             $table->timestamps();

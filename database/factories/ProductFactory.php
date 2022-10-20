@@ -19,8 +19,10 @@ class ProductFactory extends Factory
         return [
             'sku' => fake()->unique()->numerify('SKU######'),
             'ean' => fake()->unique()->ean13(),
-            'name' => fake()->words(3, true),
+            'name' => fake()->word(),
+            'category_id' => fake()->numberBetween(1, 6),
             'price' => fake()->randomFloat(2, 10, 80),
+            'description' => fake()->text(),
             'details' => json_encode(fake()->words()),
             'deleted_at' => fake()->optional()->dateTimeThisDecade(),
         ];
