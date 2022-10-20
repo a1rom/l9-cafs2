@@ -46,3 +46,5 @@ Route::controller(QueryController::class)->group(function () {
     Route::get('/query-active', 'queryActiveProductsLimitByThreeFromEnd')->name('query.active');
     Route::get('/query-orders', 'selectTwoFirstOrdersAndCountNumberOfProducts')->name('query.orders');
 });
+
+Route::get('/shop', [ProductController::class, 'index'])->name('shop');
