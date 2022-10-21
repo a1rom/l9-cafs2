@@ -4,10 +4,9 @@
 
 @section('content')
     <form action="" class="d-flex justify-content-around align-self-stretch py-3 mb-3">
-        {{-- @csrf --}}
         <div class="">
             <select class="form-select" aria-label="Category" name="category">
-                <option selected>Select a category</option>
+                <option value="null" selected>Select a category</option>
                 @foreach ($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
@@ -15,11 +14,11 @@
         </div>
         <div class="">
             {{-- <label for="search" class="form-label"></label> --}}
-            <input type="text" class="form-control" id="search" name="search" placeholder="look up...">
+            <input type="text" class="form-control" name="search" placeholder="look up...">
         </div>
         <div class="">
             <select class="form-select" aria-label="Sort" name="sort">
-                <option selected>Sort by</option>
+                <option value="null" selected>Sort by</option>
                 @foreach ($sorting as $key => $value)
                     <option value="{{ $key }}">{{ $value }}</option>
                 @endforeach
